@@ -1,5 +1,22 @@
 var mysql = require('mysql');
 var inquirer = require('inquirer');
+var pmpt = inquirer.createPromptModule()
+
+var questions = [
+    {
+      type: 'input',
+      name: 'first_name',
+      message: "What's your first name"
+    },
+    {
+      type: 'input',
+      name: 'last_name',
+      message: "What's your last name",
+      default: function() {
+        return 'Doe';
+      }
+    }
+]
 
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -14,7 +31,7 @@ connection.connect();
 connection.query('SELECT * FROM items;', function (error, results, fields) {
   if (error) throw error;
   printInventory(results)
-
+  
 });
 
 connection.end();
