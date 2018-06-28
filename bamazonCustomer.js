@@ -55,7 +55,7 @@ connection.connect();
 
 var inStore = true
 
-while (inStore) {
+// while (inStore) {
   connection.query('SELECT * FROM items;', function (error, results, fields) {
     if (error) throw error;
     // printInventory(results)
@@ -103,4 +103,4 @@ while (inStore) {
 
 
   })
-}
+// }
